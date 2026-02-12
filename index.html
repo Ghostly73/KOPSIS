@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KASIR KOPERASI SISWA SMAN 2 PROBOLINGGO</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+                <div class="shark-bg" id="fish-bg">
+                    <!-- Efek bubble animasi -->
+                    <svg id="bubble-bg" style="position:fixed;left:0;bottom:0;width:100vw;height:180px;z-index:0;pointer-events:none;" viewBox="0 0 400 180">
+                        <circle cx="50" cy="170" r="12" fill="#b3e5fc" opacity="0.18">
+                            <animate attributeName="cy" values="170;30;170" dur="8s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="120" cy="160" r="7" fill="#81d4fa" opacity="0.22">
+                            <animate attributeName="cy" values="160;20;160" dur="6s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="200" cy="175" r="10" fill="#4fc3f7" opacity="0.15">
+                            <animate attributeName="cy" values="175;40;175" dur="9s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="300" cy="165" r="8" fill="#b3e5fc" opacity="0.18">
+                            <animate attributeName="cy" values="165;25;165" dur="7s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="370" cy="170" r="6" fill="#81d4fa" opacity="0.22">
+                            <animate attributeName="cy" values="170;35;170" dur="5.5s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
+        <div class="container">
+    <h1>KASIR KOPERASI SISWA SMAN 2 PROBOLINGGO</h1>
+        <div id="login-section">
+            <h2>Login Kasir</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="loginKasir()">Login</button>
+            <div id="login-message"></div>
+        </div>
+        <div id="dashboard" style="display:none;">
+                        <h2>Dashboard Kasir</h2>
+                        <div>
+                                <h3>Input Transaksi</h3>
+                                <select id="produk-select"></select>
+                                <input type="number" id="jumlah" placeholder="Jumlah">
+                                <button onclick="tambahKeranjang()">Tambah ke Keranjang</button>
+                                <div id="transaksi-message"></div>
+                                <button onclick="prosesBayar()">Bayar</button>
+                                <button onclick="logoutKasir()">Logout</button>
+                        </div>
+                        <div>
+                                <h3>Keranjang</h3>
+                                <table id="keranjang-table" border="1" style="width:100%;margin-bottom:10px;">
+                                    <thead>
+                                        <tr>
+                                            <th>Produk</th>
+                                            <th>Jumlah</th>
+                                            <th>Harga (Rp)</th>
+                                            <th>Subtotal (Rp)</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <div style="margin:12px 0 8px 0;">
+                                    <label for="uang-diterima"><b>Uang Diterima (Rp):</b></label>
+                                    <input type="number" id="uang-diterima" min="0" placeholder="Masukkan uang diterima" style="width:180px;display:inline-block;margin-left:8px;">
+                                </div>
+                                <div id="kembalian-info" style="font-weight:bold;color:#1565c0;margin-bottom:8px;"></div>
+                        </div>
+                        <div>
+                                <h3>Scan QR Code Produk (format PNG)</h3>
+                                <div class="barcode-camera-outer">
+                                    <label for="barcode-reader" class="barcode-label">Kamera QR Code</label>
+                                    <div class="barcode-camera-wrap">
+                                        <div id="barcode-reader"></div>
+                                    </div>
+                                </div>
+                                <div class="barcode-scan-controls">
+                                    <button onclick="scanQRFromCamera()">Mulai Scan QR Code</button>
+                                    <button onclick="stopQRScanner()">Stop Scan QR Code</button> <!-- Tambahkan tombol ini -->
+                                    <input type="file" id="barcode-image-input" accept="image/png" multiple placeholder="Pilih file QR PNG" onchange="scanQRFromImage(event)">
+                                </div>
+                                <div id="barcode-result" class="barcode-result"></div>
+                        </div>
+            <div id="nota-section" style="display:none;">
+    <h3>Nota Pembayaran</h3>
+    <div id="nota-content" style="background:#fff;border:1px solid #2196f3;padding:16px;margin-bottom:10px;"></div>
+    <button onclick="printNota()">Print Nota</button>
+    <button onclick="closeNota()">Tutup</button>
+</div>
+        </div>
+    </div>
+    <!-- Tambahkan script.js agar tombol login berfungsi -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+<script src="barcode.js"></script>
+<script src="script.js"></script>
+<!-- Service worker registration removed to disable PWA features -->
+</body>
+</html>
